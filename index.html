@@ -2,289 +2,578 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
 
     <title>Outside Strategy Framework</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link
+        rel="stylesheet"
+        href="styles.css">
+
 </head>
 
 <body>
 
-    <!-- NAV -->
+    <!-- ===================================================== -->
+    <!-- PROGRESS BAR -->
+    <!-- ===================================================== -->
+
+    <div class="progress-container">
+
+        <div id="progressBar"
+            class="progress-bar">
+        </div>
+
+    </div>
+
+    <!-- ===================================================== -->
+    <!-- HEADER -->
+    <!-- ===================================================== -->
+
+    <header class="top-bar">
+
+        <div class="brand-group">
+
+            <img
+                id="outsideLogo"
+                class="brand-logo"
+                src="assets/outside-logo-black.png"
+                alt="Outside">
+
+            <span class="brand-divider">
+                ×
+            </span>
+
+            <img
+                id="clientLogo"
+                class="brand-logo client-logo"
+                src="assets/logo-cliente.png"
+                alt="Cliente">
+
+        </div>
+
+    </header>
+
+    <!-- ===================================================== -->
+    <!-- THEME BUTTON -->
+    <!-- ===================================================== -->
+
+    <button
+        id="themeToggle"
+        class="theme-btn">
+
+        <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="18"
+            height="18"
+            fill="currentColor"
+            viewBox="0 0 16 16">
+
+            <path
+                d="M8 15A7 7 0 1 0 8 1zm0 1A8 8 0 1 1 8 0a8 8 0 0 1 0 16"/>
+
+        </svg>
+
+    </button>
+
+    <!-- ===================================================== -->
+    <!-- SIDE NAV -->
+    <!-- ===================================================== -->
 
     <nav class="side-nav">
+
         <a href="#hero">01</a>
         <a href="#summary">02</a>
-        <a href="#kpi">03</a>
+        <a href="#kpis">03</a>
         <a href="#landscape">04</a>
         <a href="#benchmark">05</a>
         <a href="#trends">06</a>
         <a href="#ecosystem">07</a>
         <a href="#opportunity">08</a>
         <a href="#roadmap">09</a>
-        <a href="#closing">10</a>
+        <a href="#recommendations">10</a>
+        <a href="#closing">11</a>
+
     </nav>
 
-    <!-- HERO -->
+    <!-- ===================================================== -->
+    <!-- MAIN -->
+    <!-- ===================================================== -->
 
-    <section id="hero" class="slide hero">
+    <main>
 
-        <div class="blob"></div>
+        <!-- HERO -->
 
-        <div class="container">
+        <section
+            id="hero"
+            class="slide hero-slide">
 
-            <div class="eyebrow">
-                OUTSIDE INSIGHT REPORT
-            </div>
+            <div class="hero-blob"></div>
 
-            <h1>
-                THE FUTURE OF <br>
-                BANKING IN CHILE
-            </h1>
+            <div class="container">
 
-            <p class="hero-subtitle">
-                Digitalization, Open Finance and the rise of ecosystems.
-            </p>
-
-        </div>
-
-    </section>
-
-    <!-- SUMMARY -->
-
-    <section id="summary" class="slide">
-
-        <div class="container">
-
-            <div class="eyebrow">EXECUTIVE SUMMARY</div>
-
-            <h2>Three forces shaping the market</h2>
-
-            <div class="grid-3">
-
-                <div class="card">
-                    <span>01</span>
-                    <h3>Digital Adoption</h3>
-                    <p>Financial interactions are increasingly mobile-first.</p>
+                <div class="eyebrow">
+                    OUTSIDE INSIGHT REPORT
                 </div>
 
-                <div class="card">
-                    <span>02</span>
-                    <h3>New Competitors</h3>
-                    <p>Neobanks and wallets are redrawing the landscape.</p>
-                </div>
+                <h1 id="presentationTitle">
 
-                <div class="card">
-                    <span>03</span>
-                    <h3>Open Finance</h3>
-                    <p>Data portability will reshape customer ownership.</p>
-                </div>
+                    THE FUTURE OF
+                    BANKING IN CHILE
+
+                </h1>
+
+                <p
+                    id="presentationSubtitle"
+                    class="hero-subtitle">
+
+                    Digitalization,
+                    Open Finance
+                    and new competitors.
+
+                </p>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+        <!-- SUMMARY -->
 
-    <!-- KPI -->
+        <section
+            id="summary"
+            class="slide">
 
-    <section id="kpi" class="slide">
+            <div class="container">
 
-        <div class="container center">
+                <div class="eyebrow">
 
-            <div class="big-number">90%</div>
+                    EXECUTIVE SUMMARY
 
-            <div class="big-label">
-                Financial Inclusion
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- LANDSCAPE -->
-
-    <section id="landscape" class="slide">
-
-        <div class="container">
-
-            <div class="eyebrow">
-                MARKET LANDSCAPE
-            </div>
-
-            <h2>The market is no longer just banks</h2>
-
-            <div class="landscape-grid">
-
-                <div class="landscape-column">
-                    <h3>Banks</h3>
-                    <ul>
-                        <li>Santander</li>
-                        <li>BCI</li>
-                        <li>Banco de Chile</li>
-                        <li>Scotiabank</li>
-                    </ul>
                 </div>
 
-                <div class="landscape-column">
-                    <h3>Neobanks</h3>
-                    <ul>
-                        <li>Tenpo</li>
-                        <li>MACH</li>
-                    </ul>
-                </div>
+                <h2>
 
-                <div class="landscape-column">
-                    <h3>Wallets</h3>
-                    <ul>
-                        <li>Mercado Pago</li>
-                        <li>Prex</li>
-                        <li>Global66</li>
-                    </ul>
-                </div>
+                    Three forces shaping the market
 
-                <div class="landscape-column">
-                    <h3>Fintech</h3>
-                    <ul>
-                        <li>Fintual</li>
-                        <li>Xepelin</li>
-                        <li>Maxxa</li>
-                    </ul>
+                </h2>
+
+                <div class="summary-grid">
+
+                    <div class="summary-card">
+
+                        <span>01</span>
+
+                        <h3>Digitalization</h3>
+
+                        <p>
+                            Mobile-first interactions are becoming standard.
+                        </p>
+
+                    </div>
+
+                    <div class="summary-card">
+
+                        <span>02</span>
+
+                        <h3>New Competitors</h3>
+
+                        <p>
+                            Wallets and fintechs are redrawing the market.
+                        </p>
+
+                    </div>
+
+                    <div class="summary-card">
+
+                        <span>03</span>
+
+                        <h3>Open Finance</h3>
+
+                        <p>
+                            Customer ownership is changing.
+                        </p>
+
+                    </div>
+
                 </div>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+        <!-- KPI -->
 
-    <!-- BENCHMARK -->
+        <section
+            id="kpis"
+            class="slide metric-slide">
 
-    <section id="benchmark" class="slide bg-alt">
+            <div class="container center">
 
-        <div class="container">
+                <div
+                    id="mainKpi"
+                    class="metric-value">
 
-            <div class="eyebrow">LATAM BENCHMARK</div>
+                    90%
 
-            <h2>Regional comparison</h2>
-
-            <div class="country-grid">
-
-                <div class="country-card">Chile</div>
-                <div class="country-card">Brazil</div>
-                <div class="country-card">Mexico</div>
-                <div class="country-card">Colombia</div>
-                <div class="country-card">Peru</div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-    <!-- TRENDS -->
-
-    <section id="trends" class="slide">
-
-        <div class="container">
-
-            <div class="eyebrow">
-                TRENDS
-            </div>
-
-            <div class="trend">OPEN FINANCE</div>
-            <div class="trend">ARTIFICIAL INTELLIGENCE</div>
-            <div class="trend">EMBEDDED FINANCE</div>
-            <div class="trend">REAL-TIME PAYMENTS</div>
-
-        </div>
-
-    </section>
-
-    <!-- ECOSYSTEM -->
-
-    <section id="ecosystem" class="slide">
-
-        <div class="container center">
-
-            <div class="ecosystem">
-
-                <div class="center-node">
-                    CUSTOMER
                 </div>
 
-                <div class="orbit top">Retail</div>
-                <div class="orbit right">Travel</div>
-                <div class="orbit bottom">Insurance</div>
-                <div class="orbit left">Loyalty</div>
+                <div class="metric-label">
+
+                    Financial Inclusion
+
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+        <!-- LANDSCAPE -->
 
-    <!-- OPPORTUNITY -->
+        <section
+            id="landscape"
+            class="slide">
 
-    <section id="opportunity" class="slide">
+            <div class="container">
 
-        <div class="container">
+                <div class="eyebrow">
+                    MARKET LANDSCAPE
+                </div>
 
-            <div class="statement">
-                THE WINNER WILL NOT BE A BANK
+                <h2>
+
+                    The market is no longer just banks
+
+                </h2>
+
+                <div class="landscape-grid">
+
+                    <div class="landscape-column">
+
+                        <h3>Banks</h3>
+
+                        <ul>
+                            <li>Santander</li>
+                            <li>BCI</li>
+                            <li>Banco de Chile</li>
+                            <li>Scotiabank</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="landscape-column">
+
+                        <h3>Neobanks</h3>
+
+                        <ul>
+                            <li>Tenpo</li>
+                            <li>MACH</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="landscape-column">
+
+                        <h3>Wallets</h3>
+
+                        <ul>
+                            <li>Mercado Pago</li>
+                            <li>Prex</li>
+                            <li>Global66</li>
+                        </ul>
+
+                    </div>
+
+                    <div class="landscape-column">
+
+                        <h3>Fintech</h3>
+
+                        <ul>
+                            <li>Fintual</li>
+                            <li>Xepelin</li>
+                            <li>Maxxa</li>
+                        </ul>
+
+                    </div>
+
+                </div>
+
             </div>
 
-            <div class="highlight-pill">
-                IT WILL BE AN ECOSYSTEM
-            </div>
+        </section>
 
-        </div>
+        <!-- BENCHMARK -->
 
-    </section>
+        <section
+            id="benchmark"
+            class="slide alternate">
 
-    <!-- ROADMAP -->
+            <div class="container">
 
-    <section id="roadmap" class="slide bg-alt">
+                <div class="eyebrow">
+                    LATAM BENCHMARK
+                </div>
 
-        <div class="container">
+                <h2>
 
-            <div class="eyebrow">
-                ROADMAP
-            </div>
+                    Regional comparison
 
-            <div class="timeline">
+                </h2>
 
-                <div>2027</div>
-                <div>2028</div>
-                <div>2029</div>
-                <div>2030</div>
+                <div class="country-grid">
 
-            </div>
+                    <div class="country-card">Chile</div>
+                    <div class="country-card">Brazil</div>
+                    <div class="country-card">Mexico</div>
+                    <div class="country-card">Colombia</div>
+                    <div class="country-card">Peru</div>
 
-        </div>
-
-    </section>
-
-    <!-- CLOSING -->
-
-    <section id="closing" class="slide">
-
-        <div class="container">
-
-            <div class="closing-title">
-
-                THE FUTURE<br>
-                IS CONTEXTUAL
+                </div>
 
             </div>
 
-        </div>
+        </section>
 
-    </section>
+        <!-- TRENDS -->
 
-<script src="app.js"></script>
+        <section
+            id="trends"
+            class="slide">
+
+            <div class="container">
+
+                <div class="eyebrow">
+                    TRENDS
+                </div>
+
+                <div class="trend">
+
+                    OPEN FINANCE
+
+                </div>
+
+                <div class="trend">
+
+                    ARTIFICIAL INTELLIGENCE
+
+                </div>
+
+                <div class="trend">
+
+                    EMBEDDED FINANCE
+
+                </div>
+
+                <div class="trend">
+
+                    REAL-TIME PAYMENTS
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ECOSYSTEM -->
+
+        <section
+            id="ecosystem"
+            class="slide">
+
+            <div class="container center">
+
+                <div class="ecosystem-map">
+
+                    <div class="center-node">
+
+                        CUSTOMER
+
+                    </div>
+
+                    <div class="orbit top">
+                        Retail
+                    </div>
+
+                    <div class="orbit right">
+                        Travel
+                    </div>
+
+                    <div class="orbit bottom">
+                        Insurance
+                    </div>
+
+                    <div class="orbit left">
+                        Loyalty
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- OPPORTUNITY -->
+
+        <section
+            id="opportunity"
+            class="slide">
+
+            <div class="container">
+
+                <div class="statement">
+
+                    THE WINNER
+                    WILL NOT BE
+                    A BANK
+
+                </div>
+
+                <div class="statement-highlight">
+
+                    IT WILL BE AN ECOSYSTEM
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- ROADMAP -->
+
+        <section
+            id="roadmap"
+            class="slide alternate">
+
+            <div class="container">
+
+                <div class="eyebrow">
+                    ROADMAP
+                </div>
+
+                <div class="timeline">
+
+                    <div>2027</div>
+                    <div>2028</div>
+                    <div>2029</div>
+                    <div>2030</div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- RECOMMENDATIONS -->
+
+        <section
+            id="recommendations"
+            class="slide">
+
+            <div class="container">
+
+                <div class="eyebrow">
+
+                    RECOMMENDATIONS
+
+                </div>
+
+                <div class="recommendation-grid">
+
+                    <div class="recommendation-card">
+
+                        <h3>NOW</h3>
+
+                    </div>
+
+                    <div class="recommendation-card">
+
+                        <h3>NEXT</h3>
+
+                    </div>
+
+                    <div class="recommendation-card">
+
+                        <h3>LATER</h3>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- CLOSING -->
+
+        <section
+            id="closing"
+            class="slide">
+
+            <div class="container">
+
+                <div class="closing-title">
+
+                    THE FUTURE
+                    IS CONTEXTUAL
+
+                </div>
+
+                <div class="presentation-actions">
+
+                    <button
+                        id="goTop"
+                        class="action-btn">
+
+                        ↑ Top
+
+                    </button>
+
+                    <button
+                        id="goBottom"
+                        class="action-btn">
+
+                        ↓ End
+
+                    </button>
+
+                    <button
+                        id="exportPdf"
+                        class="action-btn">
+
+                        PDF
+
+                    </button>
+
+                    <button
+                        id="downloadPresentation"
+                        class="action-btn">
+
+                        Save
+
+                    </button>
+
+                    <button
+                        id="sharePresentation"
+                        class="action-btn">
+
+                        Share
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <script src="app.js"></script>
 
 </body>
+
 </html>
