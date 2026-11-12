@@ -367,6 +367,12 @@ p{
     z-index:2000;
 }
 
+.side-nav #goPrevious,
+.side-nav #goNext{
+
+    display:none !important;
+}
+
 .side-nav a{
 
     display:flex;
