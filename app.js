@@ -76,7 +76,7 @@ function initializeIntro() {
                 stopSound();
             }
         }, 140);
-        finish = setTimeout(finishIntro, 2800);
+        finish = setTimeout(finishIntro, 3800);
     };
 
     replay.addEventListener("click", startIntro);
