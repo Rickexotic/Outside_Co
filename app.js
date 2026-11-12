@@ -145,52 +145,70 @@ function initializeProgressBar() {
 function initializeSideNavigation() {
 
     const sections =
-        document.querySelectorAll(".slide");
+        Array.from(document.querySelectorAll(".slide"));
 
     const links =
         document.querySelectorAll(".side-nav a");
 
-    const observer =
-        new IntersectionObserver(
+    const goTop = document.getElementById("goTop");
+    const goPrevious = document.getElementById("goPrevious");
+    const goNext = document.getElementById("goNext");
+    const goBottom = document.getElementById("goBottom");
 
-            entries => {
+    let activeIndex = 0;
 
-                entries.forEach(entry => {
+    const updateNavigation = () => {
 
-                    if (!entry.isIntersecting) return;
+        const midpoint = window.innerHeight / 2;
 
-                    const id =
-                        entry.target.id;
+        const index = sections.findIndex(section => {
 
-                    links.forEach(link => {
+            const rect = section.getBoundingClientRect();
 
-                        link.classList.remove("active");
+            return rect.top <= midpoint && rect.bottom > midpoint;
 
-                        if (
-                            link.getAttribute("href") ===
-                            "#" + id
-                        ) {
+        });
 
-                            link.classList.add("active");
-                        }
+        if (index !== -1) activeIndex = index;
 
-                    });
+        links.forEach((link, linkIndex) => {
 
-                });
+            const active = linkIndex === activeIndex;
 
-            },
+            link.classList.toggle("active", active);
 
-            {
-                threshold: 0.5
+            if (active) {
+                link.setAttribute("aria-current", "step");
+            } else {
+                link.removeAttribute("aria-current");
             }
 
-        );
+        });
 
-    sections.forEach(section => {
+        goTop.disabled = goPrevious.disabled = activeIndex === 0;
+        goNext.disabled = goBottom.disabled = activeIndex === sections.length - 1;
 
-        observer.observe(section);
+    };
 
-    });
+    const goToSlide = index => {
+
+        sections[index].scrollIntoView({
+            behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches
+                ? "auto"
+                : "smooth",
+            block: "start"
+        });
+
+    };
+
+    goTop.addEventListener("click", () => goToSlide(0));
+    goPrevious.addEventListener("click", () => goToSlide(Math.max(0, activeIndex - 1)));
+    goNext.addEventListener("click", () => goToSlide(Math.min(sections.length - 1, activeIndex + 1)));
+    goBottom.addEventListener("click", () => goToSlide(sections.length - 1));
+
+    window.addEventListener("scroll", updateNavigation, { passive: true });
+    window.addEventListener("resize", updateNavigation);
+    updateNavigation();
 
 }
 
@@ -288,12 +306,6 @@ function animateCounter(
 
 function initializePresentationActions() {
 
-    const goTop =
-        document.getElementById("goTop");
-
-    const goBottom =
-        document.getElementById("goBottom");
-
     const exportPdf =
         document.getElementById("exportPdf");
 
@@ -302,107 +314,6 @@ function initializePresentationActions() {
 
     const share =
         document.getElementById("sharePresentation");
-
-    const closing =
-        document.getElementById("closing");
-
-    const setJumpButtonVisible =
-        (button, isVisible) => {
-
-            button.classList.toggle(
-                "is-visible",
-                isVisible
-            );
-
-            button.setAttribute(
-                "aria-hidden",
-                String(!isVisible)
-            );
-
-            button.tabIndex =
-                isVisible ? 0 : -1;
-
-        };
-
-    if (goTop && goBottom && closing) {
-
-        const closingObserver =
-            new IntersectionObserver(
-
-                entries => {
-
-                    const isAtEnd =
-                        entries.some(entry => entry.isIntersecting);
-
-                    setJumpButtonVisible(
-                        goBottom,
-                        !isAtEnd
-                    );
-
-                    setJumpButtonVisible(
-                        goTop,
-                        isAtEnd
-                    );
-
-                },
-
-                {
-                    threshold: 0.1
-                }
-
-            );
-
-        closingObserver.observe(closing);
-
-    }
-
-    const scrollToSection =
-        sectionId => {
-
-            const section =
-                document.getElementById(sectionId);
-
-            if (!section) return;
-
-            const prefersReducedMotion =
-                window.matchMedia(
-                    "(prefers-reduced-motion: reduce)"
-                ).matches;
-
-            section.scrollIntoView({
-                behavior: prefersReducedMotion
-                    ? "auto"
-                    : "smooth",
-                block: "start"
-            });
-
-        };
-
-    /* TOP */
-
-    if (goTop) {
-
-        goTop.addEventListener(
-            "click",
-            () => {
-
-                scrollToSection("hero");
-
-            });
-    }
-
-    /* BOTTOM */
-
-    if (goBottom) {
-
-        goBottom.addEventListener(
-            "click",
-            () => {
-
-                scrollToSection("closing");
-
-            });
-    }
 
     /* PDF */
 
