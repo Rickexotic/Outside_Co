@@ -6,6 +6,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initializeTheme();
 
+    initializeIntro();
+
     initializeProgressBar();
 
     initializeSideNavigation();
@@ -21,6 +23,90 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
 });
+
+function initializeIntro() {
+
+    const intro = document.getElementById("intro");
+    const typed = document.getElementById("introTyped");
+    const sound = document.getElementById("introSound");
+    const replay = document.getElementById("replayIntro");
+    const motion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    if (motion.matches) return;
+
+    const text = "Outside Co.";
+    let typing;
+    let finish;
+
+    const stopSound = () => {
+        sound.pause();
+        sound.currentTime = 0;
+    };
+
+    const finishIntro = () => {
+        clearInterval(typing);
+        clearTimeout(finish);
+        stopSound();
+        typed.textContent = text;
+        intro.classList.remove("intro-playing");
+        intro.classList.add("intro-complete");
+        replay.hidden = false;
+    };
+
+    const startIntro = () => {
+        clearInterval(typing);
+        clearTimeout(finish);
+        stopSound();
+        replay.hidden = true;
+        intro.classList.remove("intro-playing", "intro-complete");
+        void intro.offsetWidth;
+        intro.classList.add("intro-playing");
+        typed.textContent = "";
+
+        sound.play().catch(error => {
+            console.warn("Intro sound could not be played", error);
+        });
+
+        let position = 0;
+        typing = setInterval(() => {
+            position += 1;
+            typed.textContent = text.slice(0, position);
+            if (position === text.length) {
+                clearInterval(typing);
+                stopSound();
+            }
+        }, 140);
+        finish = setTimeout(finishIntro, 2800);
+    };
+
+    replay.addEventListener("click", startIntro);
+    window.addEventListener("scroll", () => {
+        if (intro.classList.contains("intro-playing") && intro.getBoundingClientRect().bottom <= 0) {
+            finishIntro();
+        }
+    }, { passive: true });
+    document.addEventListener("visibilitychange", () => {
+        if (document.hidden && intro.classList.contains("intro-playing")) finishIntro();
+    });
+
+    motion.addEventListener("change", event => {
+        if (!event.matches) return;
+        clearInterval(typing);
+        clearTimeout(finish);
+        stopSound();
+        typed.textContent = text;
+        intro.classList.remove("intro-playing");
+        intro.classList.add("intro-complete");
+        replay.hidden = true;
+    });
+
+    if (intro.getBoundingClientRect().bottom > 0) {
+        startIntro();
+    } else {
+        finishIntro();
+    }
+
+}
 
 /* ================================================= */
 /* SLIDE TRANSITIONS */
@@ -358,7 +444,8 @@ function initializePresentationActions() {
                         });
                     };
                     const logo = document.getElementById("outsideLogo");
-                    const [css, js, lightLogo, darkLogo] = await Promise.all([
+                    const introSound = document.getElementById("introSound");
+                    const [css, js, lightLogo, darkLogo, typingAudio] = await Promise.all([
                         stylesheet.href
                             ? readResource(stylesheet.href).then(response => response.text())
                             : stylesheet.textContent,
@@ -366,12 +453,19 @@ function initializePresentationActions() {
                             ? readResource(script.src).then(response => response.text())
                             : script.textContent,
                         logo.dataset.lightSrc || imageData("assets/outside-logo-black.png"),
-                        logo.dataset.darkSrc || imageData("assets/outside-logo-white.png")
+                        logo.dataset.darkSrc || imageData("assets/outside-logo-white.png"),
+                        introSound.src.startsWith("data:")
+                            ? introSound.src
+                            : imageData(introSound.src)
                     ]);
 
                     const copy = document.documentElement.cloneNode(true);
                     copy.setAttribute("data-standalone", "");
                     copy.querySelector("body").classList.remove("motion-enabled");
+                    copy.querySelector("#intro").classList.remove("intro-playing", "intro-complete");
+                    copy.querySelector("#introTyped").textContent = "Outside Co.";
+                    copy.querySelector("#introSound").src = typingAudio;
+                    copy.querySelector("#replayIntro").hidden = true;
                     copy.querySelectorAll(".slide").forEach(slide => slide.classList.remove("is-visible"));
                     copy.querySelector("#downloadPresentation").disabled = false;
 
@@ -524,11 +618,6 @@ function applyContent(data) {
             "clientLogo"
         );
 
-    const brandDivider =
-        document.querySelector(
-            ".brand-divider"
-        );
-
     if (
         clientLogo &&
         data.client?.logo
@@ -538,19 +627,11 @@ function applyContent(data) {
 
             clientLogo.hidden = false;
 
-            if (brandDivider) {
-                brandDivider.hidden = false;
-            }
-
         };
 
         clientLogo.onerror = () => {
 
             clientLogo.hidden = true;
-
-            if (brandDivider) {
-                brandDivider.hidden = true;
-            }
 
         };
 
