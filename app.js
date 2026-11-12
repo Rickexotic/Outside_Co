@@ -16,7 +16,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initializePresentationActions();
 
-    loadContent();
+    if (!document.documentElement.hasAttribute("data-standalone")) {
+        loadContent();
+    }
 
 });
 
@@ -87,7 +89,7 @@ function initializeTheme() {
         document.body.classList.add("dark");
 
         outsideLogo.src =
-            "assets/outside-logo-white.png";
+            outsideLogo.dataset.darkSrc || "assets/outside-logo-white.png";
     }
 
     button.addEventListener("click", () => {
@@ -98,8 +100,8 @@ function initializeTheme() {
             document.body.classList.contains("dark");
 
         outsideLogo.src = dark
-            ? "assets/outside-logo-white.png"
-            : "assets/outside-logo-black.png";
+            ? outsideLogo.dataset.darkSrc || "assets/outside-logo-white.png"
+            : outsideLogo.dataset.lightSrc || "assets/outside-logo-black.png";
 
         localStorage.setItem(
             "outside-theme",
@@ -330,37 +332,90 @@ function initializePresentationActions() {
 
         download.addEventListener(
             "click",
-            () => {
+            async () => {
 
-                const html =
-                    document.documentElement.outerHTML;
+                download.disabled = true;
 
-                const blob =
-                    new Blob(
+                try {
 
-                        [html],
-
-                        {
-                            type:
-                                "text/html"
+                    const stylesheet = document.getElementById("presentationStyles");
+                    const script = document.getElementById("presentationScript");
+                    const readResource = async url => {
+                        const response = await fetch(url);
+                        if (!response.ok) {
+                            throw new Error(`Could not load ${url}: ${response.status}`);
                         }
+                        return response;
+                    };
+                    const imageData = async url => {
+                        const response = await readResource(url);
+                        const blob = await response.blob();
+                        return new Promise((resolve, reject) => {
+                            const reader = new FileReader();
+                            reader.onload = () => resolve(reader.result);
+                            reader.onerror = () => reject(reader.error);
+                            reader.readAsDataURL(blob);
+                        });
+                    };
+                    const logo = document.getElementById("outsideLogo");
+                    const [css, js, lightLogo, darkLogo] = await Promise.all([
+                        stylesheet.href
+                            ? readResource(stylesheet.href).then(response => response.text())
+                            : stylesheet.textContent,
+                        script.src
+                            ? readResource(script.src).then(response => response.text())
+                            : script.textContent,
+                        logo.dataset.lightSrc || imageData("assets/outside-logo-black.png"),
+                        logo.dataset.darkSrc || imageData("assets/outside-logo-white.png")
+                    ]);
 
+                    const copy = document.documentElement.cloneNode(true);
+                    copy.setAttribute("data-standalone", "");
+                    copy.querySelector("body").classList.remove("motion-enabled");
+                    copy.querySelectorAll(".slide").forEach(slide => slide.classList.remove("is-visible"));
+                    copy.querySelector("#downloadPresentation").disabled = false;
+
+                    const copyLogo = copy.querySelector("#outsideLogo");
+                    copyLogo.dataset.lightSrc = lightLogo;
+                    copyLogo.dataset.darkSrc = darkLogo;
+                    copyLogo.src = document.body.classList.contains("dark") ? darkLogo : lightLogo;
+
+                    const clientLogo = document.getElementById("clientLogo");
+                    if (clientLogo && !clientLogo.hidden) {
+                        copy.querySelector("#clientLogo").src = await imageData(clientLogo.src);
+                    } else {
+                        copy.querySelector("#clientLogo").removeAttribute("src");
+                    }
+
+                    const style = document.createElement("style");
+                    style.id = "presentationStyles";
+                    style.textContent = css;
+                    copy.querySelector("#presentationStyles").replaceWith(style);
+                    const inlineScript = copy.querySelector("#presentationScript");
+                    inlineScript.removeAttribute("src");
+                    inlineScript.textContent = js.replace(/<\/script/gi, "<\\/script");
+
+                    const blob = new Blob(
+                        ["<!DOCTYPE html>\n", copy.outerHTML],
+                        { type: "text/html;charset=utf-8" }
                     );
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "outside-presentation.html";
+                    a.click();
+                    setTimeout(() => URL.revokeObjectURL(url), 1000);
 
-                const url =
-                    URL.createObjectURL(blob);
+                } catch (error) {
 
-                const a =
-                    document.createElement("a");
+                    console.error("Could not save presentation", error);
+                    alert("No se pudo guardar la presentación. Inténtalo nuevamente.");
 
-                a.href = url;
+                } finally {
 
-                a.download =
-                    "outside-presentation.html";
+                    download.disabled = false;
 
-                a.click();
-
-                URL.revokeObjectURL(url);
+                }
 
             });
     }
