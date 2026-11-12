@@ -360,7 +360,11 @@ p{
 
     align-items:center;
 
+    padding-inline:4px;
+
     max-height:calc(100vh - 16px);
+
+    overflow-x:hidden;
 
     overflow-y:auto;
 
@@ -405,7 +409,6 @@ p{
 
     text-underline-offset:4px;
 
-    transform:scale(1.2);
 }
 
 body.dark .side-nav a.active{
