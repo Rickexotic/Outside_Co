@@ -1,74 +1,473 @@
-const sections = document.querySelectorAll(".slide");
-const navLinks = document.querySelectorAll(".side-nav a");
+/* ================================================= */
+/* OUTSIDE V2.1 */
+/* ================================================= */
 
-const observer = new IntersectionObserver(
+document.addEventListener("DOMContentLoaded", () => {
 
-(entries)=>{
+    initializeTheme();
 
-entries.forEach(entry=>{
+    initializeProgressBar();
 
-if(!entry.isIntersecting) return;
+    initializeSideNavigation();
 
-const id = entry.target.id;
+    initializeKpiCounter();
 
-navLinks.forEach(link=>{
+    initializePresentationActions();
 
-link.classList.remove("active");
-
-if(link.getAttribute("href")==="#" + id){
-
-link.classList.add("active");
-
-}
+    loadContent();
 
 });
 
-});
+/* ================================================= */
+/* THEME */
+/* ================================================= */
 
-},
+function initializeTheme() {
 
-{
-threshold:0.5
-}
+    const button =
+        document.getElementById("themeToggle");
 
-);
-sections.forEach(section=>observer.observe(section));
+    const outsideLogo =
+        document.getElementById("outsideLogo");
 
-const bigNumber = document.querySelector(".big-number");
+    const savedTheme =
+        localStorage.getItem("outside-theme");
 
-let started = false;
+    if (savedTheme === "dark") {
 
-const counterObserver = new IntersectionObserver(
+        document.body.classList.add("dark");
 
-(entries)=>{
+        outsideLogo.src =
+            "assets/outside-logo-white.png";
+    }
 
-entries.forEach(entry=>{
+    button.addEventListener("click", () => {
 
-if(started) return;
+        document.body.classList.toggle("dark");
 
-if(!entry.isIntersecting) return;
+        const dark =
+            document.body.classList.contains("dark");
 
-started = true;
+        outsideLogo.src = dark
+            ? "assets/outside-logo-white.png"
+            : "assets/outside-logo-black.png";
 
-let value = 0;
+        localStorage.setItem(
+            "outside-theme",
+            dark ? "dark" : "light"
+        );
 
-const interval = setInterval(()=>{
-
-value++;
-
-bigNumber.innerText = value + "%";
-
-if(value === 90){
-
-clearInterval(interval);
-}
-
-},15);
-
-});
+    });
 
 }
 
-);
+/* ================================================= */
+/* PROGRESS BAR */
+/* ================================================= */
 
-counterObserver.observe(bigNumber);
+function initializeProgressBar() {
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    window.addEventListener("scroll", () => {
+
+        const scrollTop =
+            window.pageYOffset;
+
+        const documentHeight =
+            document.documentElement.scrollHeight -
+            document.documentElement.clientHeight;
+
+        const progress =
+            scrollTop / documentHeight;
+
+        progressBar.style.height =
+            `${progress * 100}%`;
+
+    });
+
+}
+
+/* ================================================= */
+/* SIDE NAVIGATION */
+/* ================================================= */
+
+function initializeSideNavigation() {
+
+    const sections =
+        document.querySelectorAll(".slide");
+
+    const links =
+        document.querySelectorAll(".side-nav a");
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) return;
+
+                    const id =
+                        entry.target.id;
+
+                    links.forEach(link => {
+
+                        link.classList.remove("active");
+
+                        if (
+                            link.getAttribute("href") ===
+                            "#" + id
+                        ) {
+
+                            link.classList.add("active");
+                        }
+
+                    });
+
+                });
+
+            },
+
+            {
+                threshold: 0.5
+            }
+
+        );
+
+    sections.forEach(section => {
+
+        observer.observe(section);
+
+    });
+
+}
+
+/* ================================================= */
+/* KPI ANIMATION */
+/* ================================================= */
+
+function initializeKpiCounter() {
+
+    const metric =
+        document.getElementById("mainKpi");
+
+    if (!metric) return;
+
+    let started = false;
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) return;
+
+                    if (started) return;
+
+                    started = true;
+
+                    animateCounter(
+                        metric,
+                        90,
+                        "%"
+                    );
+
+                });
+
+            },
+
+            {
+                threshold: 0.5
+            }
+
+        );
+
+    observer.observe(metric);
+
+}
+
+/* ================================================= */
+/* COUNTER */
+/* ================================================= */
+
+function animateCounter(
+    element,
+    target,
+    suffix = ""
+) {
+
+    let current = 0;
+
+    const duration = 1000;
+
+    const steps = 50;
+
+    const increment =
+        target / steps;
+
+    const interval =
+        duration / steps;
+
+    const timer =
+        setInterval(() => {
+
+            current += increment;
+
+            if (current >= target) {
+
+                current = target;
+
+                clearInterval(timer);
+            }
+
+            element.textContent =
+                Math.floor(current) +
+                suffix;
+
+        }, interval);
+
+}
+
+/* ================================================= */
+/* ACTION BUTTONS */
+/* ================================================= */
+
+function initializePresentationActions() {
+
+    const goTop =
+        document.getElementById("goTop");
+
+    const goBottom =
+        document.getElementById("goBottom");
+
+    const exportPdf =
+        document.getElementById("exportPdf");
+
+    const download =
+        document.getElementById("downloadPresentation");
+
+    const share =
+        document.getElementById("sharePresentation");
+
+    /* TOP */
+
+    if (goTop) {
+
+        goTop.addEventListener(
+            "click",
+            () => {
+
+                window.scrollTo({
+
+                    top: 0,
+
+                    behavior: "smooth"
+                });
+
+            });
+    }
+
+    /* BOTTOM */
+
+    if (goBottom) {
+
+        goBottom.addEventListener(
+            "click",
+            () => {
+
+                window.scrollTo({
+
+                    top:
+                        document.body.scrollHeight,
+
+                    behavior: "smooth"
+                });
+
+            });
+    }
+
+    /* PDF */
+
+    if (exportPdf) {
+
+        exportPdf.addEventListener(
+            "click",
+            () => {
+
+                window.print();
+
+            });
+    }
+
+    /* SAVE */
+
+    if (download) {
+
+        download.addEventListener(
+            "click",
+            () => {
+
+                const html =
+                    document.documentElement.outerHTML;
+
+                const blob =
+                    new Blob(
+
+                        [html],
+
+                        {
+                            type:
+                                "text/html"
+                        }
+
+                    );
+
+                const url =
+                    URL.createObjectURL(blob);
+
+                const a =
+                    document.createElement("a");
+
+                a.href = url;
+
+                a.download =
+                    "outside-presentation.html";
+
+                a.click();
+
+                URL.revokeObjectURL(url);
+
+            });
+    }
+
+    /* SHARE */
+
+    if (share) {
+
+        share.addEventListener(
+            "click",
+            () => {
+
+                const subject =
+                    document.title;
+
+                const body =
+                    window.location.href;
+
+                window.location.href =
+                    `mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+            });
+    }
+
+}
+
+/* ================================================= */
+/* CONTENT.JSON */
+/* ================================================= */
+
+async function loadContent() {
+
+    try {
+
+        const response =
+            await fetch(
+                "data/content.json"
+            );
+
+        if (!response.ok) return;
+
+        const data =
+            await response.json();
+
+        applyContent(data);
+
+    }
+
+    catch(error) {
+
+        console.warn(
+            "content.json not loaded",
+            error
+        );
+
+    }
+
+}
+
+/* ================================================= */
+/* APPLY CONTENT */
+/* ================================================= */
+
+function applyContent(data) {
+
+    if (!data) return;
+
+    /* TITLE */
+
+    const title =
+        document.getElementById(
+            "presentationTitle"
+        );
+
+    if (
+        title &&
+        data.presentation?.title
+    ) {
+
+        title.textContent =
+            data.presentation.title;
+
+    }
+
+    /* SUBTITLE */
+
+    const subtitle =
+        document.getElementById(
+            "presentationSubtitle"
+        );
+
+    if (
+        subtitle &&
+        data.presentation?.subtitle
+    ) {
+
+        subtitle.textContent =
+            data.presentation.subtitle;
+
+    }
+
+    /* CLIENT LOGO */
+
+    const clientLogo =
+        document.getElementById(
+            "clientLogo"
+        );
+
+    if (
+        clientLogo &&
+        data.client?.logo
+    ) {
+
+        clientLogo.src =
+            data.client.logo;
+
+    }
+
+    /* DOCUMENT TITLE */
+
+    if (
+        data.presentation?.title
+    ) {
+
+        document.title =
+            data.presentation.title;
+
+    }
+
+}
