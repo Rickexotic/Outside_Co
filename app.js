@@ -10,6 +10,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     initializeSideNavigation();
 
+    initializeSlideTransitions();
+
     initializeKpiCounter();
 
     initializePresentationActions();
@@ -17,6 +19,53 @@ document.addEventListener("DOMContentLoaded", () => {
     loadContent();
 
 });
+
+/* ================================================= */
+/* SLIDE TRANSITIONS */
+/* ================================================= */
+
+function initializeSlideTransitions() {
+
+    const prefersReducedMotion =
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    if (
+        prefersReducedMotion ||
+        !("IntersectionObserver" in window)
+    ) return;
+
+    document.body.classList.add("motion-enabled");
+
+    const observer =
+        new IntersectionObserver(
+
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) return;
+
+                    entry.target.classList.add("is-visible");
+
+                    observer.unobserve(entry.target);
+
+                });
+
+            },
+
+            {
+                threshold: 0.12
+            }
+
+        );
+
+    document.querySelectorAll(".slide").forEach(section => {
+
+        observer.observe(section);
+
+    });
+
+}
 
 /* ================================================= */
 /* THEME */
@@ -254,6 +303,81 @@ function initializePresentationActions() {
     const share =
         document.getElementById("sharePresentation");
 
+    const closing =
+        document.getElementById("closing");
+
+    const setJumpButtonVisible =
+        (button, isVisible) => {
+
+            button.classList.toggle(
+                "is-visible",
+                isVisible
+            );
+
+            button.setAttribute(
+                "aria-hidden",
+                String(!isVisible)
+            );
+
+            button.tabIndex =
+                isVisible ? 0 : -1;
+
+        };
+
+    if (goTop && goBottom && closing) {
+
+        const closingObserver =
+            new IntersectionObserver(
+
+                entries => {
+
+                    const isAtEnd =
+                        entries.some(entry => entry.isIntersecting);
+
+                    setJumpButtonVisible(
+                        goBottom,
+                        !isAtEnd
+                    );
+
+                    setJumpButtonVisible(
+                        goTop,
+                        isAtEnd
+                    );
+
+                },
+
+                {
+                    threshold: 0.1
+                }
+
+            );
+
+        closingObserver.observe(closing);
+
+    }
+
+    const scrollToSection =
+        sectionId => {
+
+            const section =
+                document.getElementById(sectionId);
+
+            if (!section) return;
+
+            const prefersReducedMotion =
+                window.matchMedia(
+                    "(prefers-reduced-motion: reduce)"
+                ).matches;
+
+            section.scrollIntoView({
+                behavior: prefersReducedMotion
+                    ? "auto"
+                    : "smooth",
+                block: "start"
+            });
+
+        };
+
     /* TOP */
 
     if (goTop) {
@@ -262,12 +386,7 @@ function initializePresentationActions() {
             "click",
             () => {
 
-                window.scrollTo({
-
-                    top: 0,
-
-                    behavior: "smooth"
-                });
+                scrollToSection("hero");
 
             });
     }
@@ -280,13 +399,7 @@ function initializePresentationActions() {
             "click",
             () => {
 
-                window.scrollTo({
-
-                    top:
-                        document.body.scrollHeight,
-
-                    behavior: "smooth"
-                });
+                scrollToSection("closing");
 
             });
     }
@@ -449,10 +562,35 @@ function applyContent(data) {
             "clientLogo"
         );
 
+    const brandDivider =
+        document.querySelector(
+            ".brand-divider"
+        );
+
     if (
         clientLogo &&
         data.client?.logo
     ) {
+
+        clientLogo.onload = () => {
+
+            clientLogo.hidden = false;
+
+            if (brandDivider) {
+                brandDivider.hidden = false;
+            }
+
+        };
+
+        clientLogo.onerror = () => {
+
+            clientLogo.hidden = true;
+
+            if (brandDivider) {
+                brandDivider.hidden = true;
+            }
+
+        };
 
         clientLogo.src =
             data.client.logo;
