@@ -151,8 +151,6 @@ function initializeSideNavigation() {
         document.querySelectorAll(".side-nav a");
 
     const goTop = document.getElementById("goTop");
-    const goPrevious = document.getElementById("goPrevious");
-    const goNext = document.getElementById("goNext");
     const goBottom = document.getElementById("goBottom");
 
     let activeIndex = 0;
@@ -185,8 +183,8 @@ function initializeSideNavigation() {
 
         });
 
-        goTop.disabled = goPrevious.disabled = activeIndex === 0;
-        goNext.disabled = goBottom.disabled = activeIndex === sections.length - 1;
+        goTop.disabled = activeIndex === 0;
+        goBottom.disabled = activeIndex === sections.length - 1;
 
     };
 
@@ -202,8 +200,6 @@ function initializeSideNavigation() {
     };
 
     goTop.addEventListener("click", () => goToSlide(0));
-    goPrevious.addEventListener("click", () => goToSlide(Math.max(0, activeIndex - 1)));
-    goNext.addEventListener("click", () => goToSlide(Math.min(sections.length - 1, activeIndex + 1)));
     goBottom.addEventListener("click", () => goToSlide(sections.length - 1));
 
     window.addEventListener("scroll", updateNavigation, { passive: true });
