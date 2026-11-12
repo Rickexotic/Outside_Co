@@ -1,1 +1,11 @@
+{
+  "client": {
+    "name": "Banco XYZ",
+    "logo": "assets/logo-cliente.png"
+  },
 
+  "presentation": {
+    "title": "The Future of Banking in Chile",
+    "subtitle": "Digitalization, Open Finance and New Competitors"
+  }
+}
