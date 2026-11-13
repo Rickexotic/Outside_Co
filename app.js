@@ -512,6 +512,24 @@ const SLIDE_RENDERERS = {
 
     },
 
+    if(window.OUTSIDE_COMPONENTS){
+
+    Object.entries(
+        window.OUTSIDE_COMPONENTS
+    ).forEach(
+
+        ([key,component])=>{
+
+            SLIDE_RENDERERS[key] =
+                slide =>
+                component.render(slide);
+
+        }
+
+    );
+
+}
+
     hero(slide, data) {
 
         const section = el("section", "hero-slide");
