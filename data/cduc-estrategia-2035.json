@@ -1,0 +1,440 @@
+{
+  "language": "es",
+
+  "brand": {
+    "name": "CDUC",
+    "logo": { "light": "", "dark": "" },
+    "storageKey": "cduc-theme",
+    "downloadName": "cduc-estrategia-2035.html"
+  },
+
+  "intro": { "text": "CDUC 2035", "action": "Buscar" },
+
+  "client": { "name": "Club Deportivo Universidad Católica", "logo": "assets/cduc-logo-uc.png" },
+
+  "presentation": {
+    "title": "De Club Deportivo a Comunidad Familiar",
+    "subtitle": "Liderazgo deportivo · Comunidad y pertenencia"
+  },
+
+  "slides": [
+    { "type": "client", "id": "cliente", "eyebrow": "PREPARADO PARA" },
+    { "type": "hero", "id": "portada", "eyebrow": "VISIÓN 2035" },
+
+    {
+      "type": "summary",
+      "id": "resumen",
+      "eyebrow": "RESUMEN EJECUTIVO",
+      "title": "Del liderazgo deportivo a la comunidad familiar",
+      "items": [
+        {
+          "tag": "POSICIÓN DE MERCADO",
+          "title": "Liderazgo Consolidado",
+          "text": "El CDUC es el club deportivo más importante de Chile, con activos únicos en marca UC, infraestructura de clase mundial en San Carlos de Apoquindo, multideporte y alto rendimiento."
+        },
+        {
+          "tag": "FOCO ESTRATÉGICO",
+          "title": "Infraestructura No Es La Palanca",
+          "text": "La ventaja competitiva no se amplía con más construcción. Los activos físicos ya están en posición de liderazgo; la palanca de crecimiento es otra."
+        },
+        {
+          "tag": "OPORTUNIDAD CLAVE",
+          "title": "Comunidad y Familia Como Motor",
+          "text": "La oportunidad estratégica está en profundizar pertenencia, participación familiar y vínculos emocionales duraderos con el club hacia 2035."
+        }
+      ]
+    },
+
+    {
+      "type": "columns",
+      "id": "que-es-hoy",
+      "eyebrow": "ECOSISTEMA INTEGRADO · 4 DIMENSIONES, UN SOLO CLUB",
+      "title": "¿Qué es hoy el CDUC?",
+      "cols": 4,
+      "columns": [
+        { "title": "Club House & Servicios", "items": ["Instalaciones de primer nivel para socios y familias: piscinas, gimnasios, canchas y espacios de encuentro comunitario."] },
+        { "title": "Ramas & Escuelas Deportivas", "items": ["Formación y competencia en múltiples disciplinas: fútbol, tenis, natación, básquetbol y más de 15 ramas activas."] },
+        { "title": "Eventos & Instalaciones", "items": ["San Carlos de Apoquindo como activo estratégico único: estadio, infraestructura de alto rendimiento y sede de eventos."] },
+        { "title": "Comunidad de Socios", "items": ["Vínculo emocional, pertenencia e identidad UC: una comunidad familiar que trasciende el deporte y genera lealtad generacional."] }
+      ],
+      "note": "Activo estratégico: San Carlos de Apoquindo."
+    },
+
+    {
+      "type": "summary",
+      "id": "activos",
+      "alternate": true,
+      "eyebrow": "VENTAJA COMPETITIVA INSUPERABLE",
+      "title": "Activos Estratégicos Únicos",
+      "cols": 4,
+      "items": [
+        { "title": "Marca Universidad Católica", "text": "Reconocimiento institucional único en el deporte chileno, respaldado por una de las universidades más prestigiosas del país." },
+        { "title": "San Carlos de Apoquindo", "text": "Infraestructura premium exclusiva que ofrece instalaciones deportivas de clase mundial en un entorno privilegiado de Santiago." },
+        { "title": "Multideporte", "text": "Oferta deportiva diversificada sin igual en Chile, con disciplinas para todas las edades y niveles de competencia." },
+        { "title": "Alto Rendimiento", "text": "Formación de élite con metodología de clase mundial, produciendo deportistas de alto nivel en múltiples disciplinas." },
+        { "title": "Comunidad Familiar", "text": "Vínculo emocional multigeneracional consolidado que convierte al club en parte esencial de la identidad familiar de sus socios." },
+        { "title": "Historia Institucional", "text": "Legado de excelencia deportiva y valores UC que genera orgullo, pertenencia y diferenciación frente a cualquier competidor." },
+        { "title": "Vinculación con Cruzados", "text": "Sinergia estratégica con el club de fútbol profesional de mayor audiencia en Chile, amplificando alcance y visibilidad de marca." },
+        { "title": "Vinculación Universitaria", "text": "Respaldo académico e institucional diferenciador que otorga credibilidad, red de contactos y recursos únicos en el mercado deportivo." }
+      ],
+      "note": "8 activos que ningún otro club chileno reúne simultáneamente."
+    },
+
+    {
+      "type": "summary",
+      "id": "desafio",
+      "eyebrow": "EL VERDADERO DESAFÍO",
+      "title": "Liderazgo conquistado, nueva misión",
+      "items": [
+        { "number": "#1", "tag": "LIDERAZGO CONQUISTADO", "title": "Posición dominante", "text": "Posición dominante en el deporte chileno ya alcanzada." },
+        { "number": "→", "tag": "NUEVA MISIÓN · COMUNIDAD FAMILIAR", "title": "Ecosistema de vida familiar activa", "text": "Evolucionar hacia un ecosistema de vida familiar activa." },
+        { "number": "→", "tag": "TRANSFORMACIÓN · DE CLUB A ECOSISTEMA", "title": "Más allá del deporte", "text": "Ampliar la propuesta de valor más allá del deporte." }
+      ],
+      "note": "El CDUC debe evolucionar su propuesta de valor para capturar el tiempo libre familiar y consolidarse como la comunidad más relevante del país."
+    },
+
+    {
+      "type": "statement",
+      "id": "desafio-frase",
+      "text": "EL DESAFÍO YA NO ES SER EL CLUB MÁS IMPORTANTE",
+      "highlight": "Es transformarse en la comunidad deportiva y familiar más relevante del país"
+    },
+
+    {
+      "type": "columns",
+      "id": "competidor",
+      "alternate": true,
+      "eyebrow": "EL VERDADERO COMPETIDOR",
+      "title": "No competimos por socios: competimos por tiempo",
+      "cols": 2,
+      "columns": [
+        {
+          "title": "Percepción errónea: competimos contra otros clubes",
+          "items": ["Colo-Colo y Universidad de Chile", "Otros clubes deportivos de Santiago", "Clubes de tenis, golf y natación", "Competencia por socios e hinchas", "Esta visión limita el potencial estratégico del CDUC"]
+        },
+        {
+          "title": "Realidad estratégica: competimos por el tiempo libre familiar",
+          "items": ["Segundas viviendas y casas de campo", "Gimnasios y centros de fitness independientes", "Plataformas de streaming y entretenimiento digital", "Viajes y turismo familiar", "Mall y centros comerciales", "Actividades escolares y extraescolares", "Deportes practicados fuera del club"]
+        }
+      ],
+      "note": "El CDUC compite por las horas del fin de semana familiar, no por socios de otros clubes."
+    },
+
+    {
+      "type": "summary",
+      "id": "socio-compra",
+      "eyebrow": "CAMBIO DE PARADIGMA",
+      "title": "Lo que el Socio Realmente Compra",
+      "items": [
+        { "title": "Desarrollo de Hijos", "text": "Formación deportiva, hábitos saludables y crecimiento personal desde temprana edad para sus hijos." },
+        { "title": "Bienestar", "text": "Acceso a actividad física, salud mental y calidad de vida integral para toda la familia." },
+        { "title": "Comunidad", "text": "Vínculos sociales sólidos, amistades duraderas y sentido de pertenencia a un grupo de valores compartidos." },
+        { "title": "Seguridad", "text": "Entorno protegido, confiable y supervisado para que niños y adultos disfruten sin preocupaciones." },
+        { "title": "Identidad", "text": "Orgullo de pertenecer a la tradición, los valores y el prestigio de la comunidad UC." },
+        { "title": "Conveniencia", "text": "Servicios integrados, horarios flexibles y una experiencia sin fricciones que respeta el tiempo del socio." }
+      ],
+      "note": "El socio no compra canchas ni piscinas: compra resultados, experiencias y pertenencia."
+    },
+
+    {
+      "type": "donut-chart",
+      "id": "segmentos",
+      "alternate": true,
+      "eyebrow": "SEGMENTOS DE SOCIOS",
+      "title": "Cinco segmentos, cinco motivaciones",
+      "center": { "value": "5", "label": "segmentos" },
+      "format": { "suffix": "%" },
+      "items": [
+        { "label": "Familias Jóvenes", "value": 40, "detail": "Deporte formativo · Amistades · Hábitos saludables" },
+        { "label": "Familias UC", "value": 20, "detail": "Identidad · Tradición · Pertenencia" },
+        { "label": "Ejecutivos Activos", "value": 20, "detail": "Bienestar · Deporte · Tiempo eficiente" },
+        { "label": "Deportistas Competitivos", "value": 10, "detail": "Rendimiento · Infraestructura · Entrenamiento" },
+        { "label": "Seniors", "value": 10, "detail": "Comunidad · Salud · Vida social" }
+      ]
+    },
+
+    {
+      "type": "bar-chart",
+      "id": "valor-percibido",
+      "eyebrow": "MAPA DE VALOR PERCIBIDO",
+      "title": "Importancia percibida por el socio",
+      "caption": "Importancia percibida por el socio CDUC — 7 dimensiones de valor (índice 0–100)",
+      "orientation": "horizontal",
+      "highlight": "max",
+      "max": 100,
+      "items": [
+        { "label": "Desarrollo hijos", "value": 95 },
+        { "label": "Identidad UC", "value": 92 },
+        { "label": "Comunidad", "value": 80 },
+        { "label": "Seguridad", "value": 78 },
+        { "label": "Deporte", "value": 75 },
+        { "label": "Gastronomía", "value": 60 },
+        { "label": "Beneficios", "value": 55 }
+      ]
+    },
+
+    {
+      "type": "summary",
+      "id": "conclusiones",
+      "alternate": true,
+      "eyebrow": "MAPA DE VALOR PERCIBIDO",
+      "title": "Conclusiones Clave",
+      "cols": 2,
+      "items": [
+        { "tag": "MÁXIMA PRIORIDAD", "title": "Motores emocionales", "text": "Desarrollo de hijos e Identidad UC son los motores emocionales más poderosos — superan a cualquier atributo funcional del club." },
+        { "tag": "ALTA IMPORTANCIA", "title": "Núcleo de retención", "text": "Comunidad, Seguridad y Deporte conforman el núcleo de retención: son los pilares que el socio evalúa para renovar su membresía." },
+        { "tag": "FACTORES HIGIÉNICOS", "title": "Esperados, no diferenciadores", "text": "Gastronomía y Beneficios tienen importancia media — son esperados, pero no diferencian ni generan lealtad por sí solos." },
+        { "tag": "IMPLICANCIA ESTRATÉGICA", "title": "Dónde invertir", "text": "La inversión debe concentrarse en las dimensiones de mayor valor percibido: programas formativos para hijos e identidad UC como ejes de posicionamiento." }
+      ]
+    },
+
+    {
+      "type": "summary",
+      "id": "benchmark",
+      "eyebrow": "BENCHMARK INTERNACIONAL",
+      "title": "Qué Aprendemos del Mundo",
+      "items": [
+        { "number": "AR", "tag": "ARGENTINA", "title": "CUBA", "text": "Identidad y pertenencia como ancla de permanencia: los socios no compran deporte, compran quiénes son." },
+        { "number": "AR", "tag": "ARGENTINA", "title": "CASI", "text": "Comunidad multigeneracional como propuesta de valor: el club conecta abuelos, padres e hijos." },
+        { "number": "AR", "tag": "ARGENTINA", "title": "SIC", "text": "Familia y continuidad como motor de retención: el club es parte del ciclo de vida familiar." },
+        { "number": "BR", "tag": "BRASIL", "title": "Pinheiros", "text": "Escala multideporte con múltiples razones de uso: más disciplinas generan más motivos para volver." },
+        { "number": "EU", "tag": "EUROPA", "title": "David Lloyd", "text": "Conveniencia familiar como diferenciador clave: todo en un lugar, diseñado para la vida cotidiana." },
+        { "number": "US", "tag": "EEUU", "title": "Life Time", "text": "Wellness personalizado como experiencia premium: el bienestar integral supera al deporte tradicional." }
+      ],
+      "note": "Insight clave: los mejores clubes del mundo no venden deporte — venden identidad, pertenencia, comunidad y experiencias de vida."
+    },
+
+    {
+      "type": "summary",
+      "id": "leccion",
+      "alternate": true,
+      "eyebrow": "LA GRAN LECCIÓN DEL BENCHMARK",
+      "title": "Lo que dicen los mejores clubes",
+      "items": [
+        { "title": "Comunidad como Producto", "text": "La identidad y pertenencia son el verdadero ancla de retención de socios a largo plazo." },
+        { "title": "Tradición como Ancla", "text": "La historia compartida y el legado cultural superan cualquier ventaja de infraestructura física." },
+        { "title": "Personas sobre Espacios", "text": "El capital humano y los vínculos sociales son el activo diferenciador e inimitable del club." }
+      ],
+      "note": "Insight validado por 6 clubes benchmark de Argentina, Brasil, Europa y EEUU."
+    },
+
+    {
+      "type": "statement",
+      "id": "leccion-frase",
+      "text": "LOS SOCIOS PERMANECEN POR QUIÉNES ESTÁN ALLÍ,",
+      "highlight": "no por las instalaciones"
+    },
+
+    {
+      "type": "columns",
+      "id": "ecosistema",
+      "eyebrow": "ECOSISTEMA UC",
+      "title": "Del Actual al Futuro",
+      "cols": 2,
+      "columns": [
+        {
+          "title": "Estructura actual: jerarquía vertical",
+          "items": [
+            "UC — Universidad Católica",
+            "CDUC — Club Deportivo",
+            "Cruzados SADP",
+            "Escuelas y Ramas Deportivas",
+            "Socios",
+            "Flujo top-down: decisiones y comunicación descienden en cascada por niveles",
+            "Silos separados: cada unidad opera de forma independiente sin integración",
+            "Socio = receptor pasivo al final de la cadena"
+          ]
+        },
+        {
+          "title": "Visión futura: red comunitaria",
+          "items": [
+            "COMUNIDAD UC — Centro activo",
+            "CDUC · Cruzados · Alumni · Ex Deportistas · Familias · Escuelas",
+            "Flujo horizontal: conexiones multidireccionales entre todos los actores del ecosistema",
+            "Red integrada: identidad, pertenencia y comunidad como eje articulador común",
+            "Socio = centro activo y motor de la comunidad"
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "columns",
+      "id": "cruzados",
+      "alternate": true,
+      "eyebrow": "UNA MARCA UC",
+      "title": "Oportunidad CDUC + Cruzados",
+      "cols": 3,
+      "columns": [
+        {
+          "title": "Propuesta de valor única",
+          "items": ["Una sola percepción en la mente del socio: “Universidad Católica”. La integración CDUC-Cruzados crea una propuesta inimitable en el mercado chileno, transformando la historia deportiva en capital comunitario a través de la Red Ex Deportistas UC."]
+        },
+        {
+          "title": "Familia Cruzada — 4 beneficios clave",
+          "items": ["Experiencias en Estadio: acceso exclusivo y zonas VIP", "Entrenamiento Abierto: acceso a sesiones del plantel", "Acceso Preferente: prioridad en eventos UC", "Actividades para Niños: programas infantiles y juveniles"]
+        },
+        {
+          "title": "Trayectoria de Vida UC",
+          "items": ["Niño", "Juvenil", "Universitario", "Familia", "Senior"]
+        }
+      ]
+    },
+
+    {
+      "type": "columns",
+      "id": "fidelizacion",
+      "eyebrow": "MODELO DE FIDELIZACIÓN",
+      "title": "El Error y la Propuesta",
+      "cols": 2,
+      "columns": [
+        {
+          "title": "El error tradicional: modelo centrado en transacciones",
+          "items": [
+            "Premiar el consumo: descuentos y beneficios atados al gasto inmediato del socio",
+            "Acumulación de puntos: sistema transaccional sin vínculo emocional con el club",
+            "Beneficios transaccionales: ofertas y descuentos que no generan sentido de pertenencia",
+            "Sin vínculo emocional: el socio se va cuando deja de percibir valor económico directo"
+          ]
+        },
+        {
+          "title": "La propuesta CDUC: modelo centrado en pertenencia",
+          "items": [
+            "Premiar permanencia: reconocimiento por años de membresía continua y lealtad al club",
+            "Participación comunitaria: beneficios ligados a la participación activa en la comunidad UC",
+            "Identidad UC como valor central: el orgullo cruzado es el motor de fidelización sostenible",
+            "4 niveles: Plata · Oro · Platino · Tradición"
+          ]
+        }
+      ],
+      "note": "Cambio de paradigma: de premiar lo que el socio compra, a reconocer quién es y cuánto tiempo lleva siendo parte de la comunidad UC."
+    },
+
+    {
+      "type": "summary",
+      "id": "programas",
+      "alternate": true,
+      "eyebrow": "ECOSISTEMA DE FIDELIZACIÓN",
+      "title": "Cinco programas para la pertenencia",
+      "items": [
+        { "tag": "PRIORIDAD · RECONOCIMIENTOS · HITOS", "title": "Programa Familias UC", "text": "Prioridad en eventos, reconocimientos especiales y celebración de hitos familiares a lo largo del ciclo de vida del socio." },
+        { "tag": "SALUD · EDUCACIÓN · TURISMO", "title": "Club de Beneficios UC", "text": "Acceso exclusivo a convenios en salud, educación, deporte, gastronomía y turismo para socios y su grupo familiar." },
+        { "tag": "EJECUTIVOS · EX ALUMNOS · EMPRENDEDORES", "title": "Networking UC", "text": "Plataforma de conexión entre ejecutivos, emprendedores y ex alumnos UC, generando capital social y oportunidades de negocio." },
+        { "tag": "RETENCIÓN · PERMANENCIA · VÍNCULO", "title": "Comunidad Senior UC", "text": "Programas diseñados para extender la permanencia y fortalecer el vínculo emocional de socios mayores con la institución, reduciendo la deserción en etapas avanzadas." },
+        { "tag": "FIESTA UC · CORRIDA FAMILIAR · GALA", "title": "Calendario Anual UC", "text": "Agenda de experiencias únicas: Fiesta UC, Semana del Deporte, Corrida Familiar y Gala Ex Deportistas, creando momentos de pertenencia a lo largo del año." }
+      ]
+    },
+
+    {
+      "type": "bar-chart",
+      "id": "ltv",
+      "eyebrow": "LTV FAMILIAR",
+      "title": "Pensar en Familias, No en Individuos",
+      "caption": "LTV acumulado relativo: individuo vs. familia tipo",
+      "orientation": "vertical",
+      "highlight": 2,
+      "format": { "suffix": "x" },
+      "items": [
+        { "label": "Individuo (1 socio)", "value": 1 },
+        { "label": "Familia tipo (2 padres)", "value": 2 },
+        { "label": "Familia tipo (2+2 miembros)", "value": 4 }
+      ],
+      "source": "A un horizonte de 20 años, el LTV acumulado de la familia tipo (2+2) alcanza 80x el del individuo.",
+      "note": "El LTV familiar es el indicador estratégico más importante para la sustentabilidad del CDUC. La unidad de análisis debe ser la familia, no el individuo — multiplicando el valor por 4x con un horizonte de 20 años."
+    },
+
+    {
+      "type": "kpis",
+      "id": "ltv-familia",
+      "alternate": true,
+      "eyebrow": "LTV FAMILIAR",
+      "title": "La familia tipo CDUC",
+      "cols": 3,
+      "items": [
+        { "label": "LTV individual promedio", "value": 1, "suffix": "x", "note": "Unidad de análisis tradicional — 1 socio, horizonte corto" },
+        { "label": "LTV familia tipo (2+2)", "value": 4, "suffix": "x", "note": "2 padres + 2 hijos — 4 socios activos por núcleo familiar" },
+        { "label": "Permanencia promedio", "value": 20, "suffix": " años", "note": "Horizonte temporal de sustentabilidad por familia tipo" }
+      ],
+      "note": "Composición: padres (socios titulares, 2 adultos activos) e hijos (beneficiarios, 2 menores incluidos). Nueva definición de éxito: participación en la vida familiar."
+    },
+
+    {
+      "type": "kpis",
+      "id": "kpis-estrategicos",
+      "eyebrow": "KPIs ESTRATÉGICOS",
+      "title": "Nueva definición de éxito: participación en la vida de la familia",
+      "cols": 3,
+      "items": [
+        { "label": "Retención de socios", "value": 85, "suffix": "%", "delta": "Meta >85%", "note": "Porcentaje de socios que renuevan su membresía anualmente. Indicador primario de satisfacción y fidelidad." },
+        { "label": "Permanencia promedio", "value": 8, "suffix": "+", "delta": "Meta >8 años", "note": "Años promedio de permanencia activa por familia. Base del cálculo del LTV familiar a largo plazo." },
+        { "label": "Actividades por familia", "value": 3, "suffix": "+", "delta": "Meta >3/mes", "note": "Número de actividades mensuales por grupo familiar. Mide profundidad de uso y vinculación con el club." },
+        { "label": "Participación en eventos", "value": 60, "suffix": "%", "delta": "Meta >60%", "note": "Porcentaje de familias que asisten a eventos institucionales. Refleja sentido de pertenencia y comunidad." },
+        { "label": "NPS de socios", "value": 70, "suffix": "+", "delta": "Meta >70", "note": "Net Promoter Score de la base de socios. Mide disposición a recomendar el CDUC a otras familias." }
+      ]
+    },
+
+    {
+      "type": "summary",
+      "id": "pilares",
+      "alternate": true,
+      "eyebrow": "HOJA DE RUTA 2026–2028",
+      "title": "Pilares estratégicos",
+      "items": [
+        { "title": "Datos y Segmentación", "text": "Construir la base de conocimiento del socio mediante CRM, LTV familiar y segmentación avanzada para decisiones basadas en datos." },
+        { "title": "Propuesta de Valor Familiar", "text": "Desarrollar el modelo Familia Cruzada con beneficios diferenciados, integración de ex deportistas y programas multigeneracionales." },
+        { "title": "Ecosistema Digital", "text": "Escalar con personalización a escala, analítica predictiva y plataforma digital integrada para maximizar retención y experiencia." }
+      ]
+    },
+
+    {
+      "type": "columns",
+      "id": "fases",
+      "eyebrow": "HOJA DE RUTA 2026–2028",
+      "title": "Implementación por fases",
+      "cols": 3,
+      "columns": [
+        { "title": "Fase 1: Fundamentos (0–12 meses)", "items": ["Foco: segmentación de socios, implementación CRM y cálculo de LTV familiar como métrica base.", "CRM · Segmentación · LTV Familia UC"] },
+        { "title": "Fase 2: Familia Cruzada (12–24 meses)", "items": ["Foco: lanzar modelo Familia Cruzada, estructurar beneficios diferenciados e integrar ex deportistas al ecosistema.", "Familia Cruzada · Beneficios · Ex Deportistas"] },
+        { "title": "Fase 3: Ecosistema Digital (24–36 meses)", "items": ["Foco: plataforma digital integrada, personalización a escala y analítica predictiva para optimización continua.", "App Digital · Analítica · Personalización"] }
+      ]
+    },
+
+    {
+      "type": "summary",
+      "id": "impacto",
+      "alternate": true,
+      "eyebrow": "IMPACTO ESPERADO",
+      "title": "Qué cambia para el club",
+      "cols": 2,
+      "items": [
+        { "tag": "FIDELIZACIÓN SOSTENIDA", "title": "Mayor Retención de Socios", "text": "Reducción del churn mediante experiencias personalizadas y beneficios diferenciados por etapa de vida del socio." },
+        { "tag": "ACTIVACIÓN FAMILIAR", "title": "Más Participación Familiar", "text": "Incremento en la asistencia a actividades del club por parte de grupos familiares completos en todas las disciplinas." },
+        { "tag": "CRECIMIENTO DE BASE", "title": "Más Familias Activas en el Club", "text": "Mayor número de familias con membresías activas y uso frecuente de instalaciones deportivas y recreativas del CDUC." },
+        { "tag": "IDENTIDAD UC", "title": "Mayor Sentido de Pertenencia", "text": "Fortalecimiento de la identidad UC y vínculo emocional con el club a lo largo de generaciones de socios y familias." }
+      ]
+    },
+
+    {
+      "type": "statement",
+      "id": "vision-2035",
+      "text": "2035",
+      "highlight": "CLUB DEPORTIVO UNIVERSIDAD CATÓLICA"
+    },
+
+    {
+      "type": "summary",
+      "id": "vision",
+      "alternate": true,
+      "eyebrow": "VISIÓN 2035",
+      "title": "La comunidad más relevante de Chile",
+      "items": [
+        { "title": "Liderazgo Familiar", "text": "Comunidad y pertenencia" },
+        { "title": "Deporte & Bienestar", "text": "Formación integral" },
+        { "title": "Identidad UC", "text": "Tradición en cada etapa de la vida" }
+      ],
+      "note": "La comunidad deportiva, familiar y de pertenencia más relevante de Chile, integrando deporte, bienestar, formación y tradición UC a lo largo de todas las etapas de la vida."
+    },
+
+    { "type": "closing", "id": "cierre", "text": "CDUC 2035", "actions": ["pdf", "download", "share"] }
+  ]
+}

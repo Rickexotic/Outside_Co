@@ -1,4 +1,22 @@
 {
+  "language": "en",
+
+  "brand": {
+    "name": "Outside Co.",
+    "logo": {
+      "light": "assets/outside-logo-black.png",
+      "dark": "assets/outside-logo-white.png"
+    },
+    "storageKey": "outside-theme",
+    "downloadName": "outside-presentation.html"
+  },
+
+  "intro": {
+    "text": "Outside Co.",
+    "action": "Buscar",
+    "sound": "assets/typing.m4a"
+  },
+
   "client": {
     "name": "Banco XYZ",
     "logo": "assets/logo-cliente.png"
@@ -7,5 +25,88 @@
   "presentation": {
     "title": "The Future of Banking in Chile",
     "subtitle": "Digitalization, Open Finance and New Competitors"
-  }
+  },
+
+  "slides": [
+    {
+      "type": "hero",
+      "id": "hero",
+      "eyebrow": "OUTSIDE INSIGHT REPORT"
+    },
+    {
+      "type": "summary",
+      "id": "summary",
+      "eyebrow": "EXECUTIVE SUMMARY",
+      "title": "Three forces shaping the market",
+      "items": [
+        { "title": "Digitalization", "text": "Mobile-first interactions are becoming standard." },
+        { "title": "New Competitors", "text": "Wallets and fintechs are redrawing the market." },
+        { "title": "Open Finance", "text": "Customer ownership is changing." }
+      ]
+    },
+    {
+      "type": "metric",
+      "id": "kpis",
+      "value": 90,
+      "suffix": "%",
+      "label": "Financial Inclusion"
+    },
+    {
+      "type": "columns",
+      "id": "landscape",
+      "eyebrow": "MARKET LANDSCAPE",
+      "title": "The market is no longer just banks",
+      "columns": [
+        { "title": "Banks", "items": ["Santander", "BCI", "Banco de Chile", "Scotiabank"] },
+        { "title": "Neobanks", "items": ["Tenpo", "MACH"] },
+        { "title": "Wallets", "items": ["Mercado Pago", "Prex", "Global66"] },
+        { "title": "Fintech", "items": ["Fintual", "Xepelin", "Maxxa"] }
+      ]
+    },
+    {
+      "type": "cards",
+      "id": "benchmark",
+      "alternate": true,
+      "eyebrow": "LATAM BENCHMARK",
+      "title": "Regional comparison",
+      "items": ["Chile", "Brazil", "Mexico", "Colombia", "Peru"]
+    },
+    {
+      "type": "list",
+      "id": "trends",
+      "eyebrow": "TRENDS",
+      "items": ["OPEN FINANCE", "ARTIFICIAL INTELLIGENCE", "EMBEDDED FINANCE", "REAL-TIME PAYMENTS"]
+    },
+    {
+      "type": "ecosystem",
+      "id": "ecosystem",
+      "center": "CUSTOMER",
+      "items": ["Retail", "Travel", "Insurance", "Loyalty"]
+    },
+    {
+      "type": "statement",
+      "id": "opportunity",
+      "text": "THE WINNER WILL NOT BE A BANK",
+      "highlight": "IT WILL BE AN ECOSYSTEM"
+    },
+    {
+      "type": "timeline",
+      "id": "roadmap",
+      "alternate": true,
+      "eyebrow": "ROADMAP",
+      "items": ["2027", "2028", "2029", "2030"]
+    },
+    {
+      "type": "recommendations",
+      "id": "recommendations",
+      "eyebrow": "RECOMMENDATIONS",
+      "items": ["NOW", "NEXT", "LATER"]
+    },
+    {
+      "type": "closing",
+      "id": "closing",
+      "text": "THE FUTURE IS CONTEXTUAL",
+      "actions": ["pdf", "download", "share"]
+    }
+  ]
 }
