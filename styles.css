@@ -1850,3 +1850,37 @@ body{
 .landscape-column li.has-icon .icon{ width:20px; height:20px; }
 .trend.has-icon{ display:flex; align-items:center; gap:.4em; }
 body.dark .icon{ color:var(--lime); }
+
+/* Menú de compartir (email + WhatsApp) */
+.share-wrap{ position:relative; display:inline-flex; }
+.share-menu{ position:absolute; left:100%; top:0; display:flex; gap:16px; padding-left:16px; pointer-events:none; }
+.share-menu.is-open{ pointer-events:auto; }
+.share-option{
+    opacity:0;
+    visibility:hidden;
+    transform:translateX(-72px) scale(.2);
+    transition:
+        transform .5s cubic-bezier(.34,1.56,.64,1) calc(var(--i) * 70ms),
+        opacity .25s ease calc(var(--i) * 70ms),
+        visibility 0s linear .5s,
+        box-shadow .2s ease;
+}
+.share-menu.is-open .share-option{
+    opacity:1;
+    visibility:visible;
+    transform:none;
+    transition:
+        transform .5s cubic-bezier(.34,1.56,.64,1) calc(var(--i) * 70ms),
+        opacity .25s ease calc(var(--i) * 70ms),
+        visibility 0s;
+}
+.share-menu.is-open .share-option:hover{ transform:scale(1.1); transition-delay:0s; }
+.share-option:focus-visible, .action-btn:focus-visible{ outline:3px solid var(--lavender); outline-offset:3px; }
+@media (prefers-reduced-motion:reduce){
+    .share-option, .share-menu.is-open .share-option{ transition:opacity .15s ease; transform:none; }
+}
+@media (max-width:600px){
+    .share-menu{ left:50%; top:auto; bottom:100%; flex-direction:column-reverse; padding:0 0 12px; transform:translateX(-50%); }
+    .share-option{ transform:translateY(72px) scale(.2); }
+}
+@media print{ .share-menu{ display:none; } }
