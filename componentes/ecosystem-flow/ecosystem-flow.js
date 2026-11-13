@@ -1,37 +1,66 @@
-export default {
+window.OUTSIDE_COMPONENTS =
+window.OUTSIDE_COMPONENTS || {};
 
-    type: "ecosystem-flow",
+window.OUTSIDE_COMPONENTS["ecosystem-flow"] = {
 
-    render(slide) {
+    render(slide){
 
-        return `
-            <section
-                id="${slide.id || ''}"
-                class="slide ecosystem-flow-slide">
+        const section = el("section");
 
-                <div class="container">
+        const container =
+            el("div","container");
 
-                    <div class="eyebrow">
-                        ${slide.eyebrow || ''}
-                    </div>
+        if(slide.eyebrow){
 
-                    <h2>
-                        ${slide.title || ''}
-                    </h2>
+            container.append(
+                el(
+                    "div",
+                    "eyebrow",
+                    slide.eyebrow
+                )
+            );
+        }
 
-                    <div class="ecosystem-flow">
+        if(slide.title){
 
-                        <div class="ecosystem-hub">
+            container.append(
+                el(
+                    "h2",
+                    null,
+                    slide.title
+                )
+            );
+        }
 
-                            ${slide.center?.label || 'Platform'}
+        const eco =
+            el(
+                "div",
+                "ecosystem-flow"
+            );
 
-                        </div>
+        const hub =
+            el(
+                "div",
+                "ecosystem-hub"
+            );
 
-                    </div>
+        const hubInner =
+            el(
+                "div",
+                "ecosystem-hub-inner",
+                slide.center?.label ||
+                "Platform"
+            );
 
-                </div>
+        hub.append(hubInner);
 
-            </section>
-        `;
+        eco.append(hub);
+
+        container.append(eco);
+
+        section.append(container);
+
+        return section;
     }
+
 };
