@@ -32,8 +32,8 @@
       "eyebrow": "INDICADORES CLAVE",
       "title": "Un vistazo al año",
       "items": [
-        { "label": "Ingresos", "value": 128.4, "prefix": "$", "suffix": "M", "decimals": 1, "delta": "12%", "trend": "up", "spark": [4, 6, 5, 8, 9, 12, 11, 15] },
-        { "label": "Clientes activos", "value": 48200, "delta": "8%", "trend": "up", "spark": [10, 11, 13, 12, 15, 16, 18, 19] },
+        { "icon": "globe2", "label": "Ingresos", "value": 128.4, "prefix": "$", "suffix": "M", "decimals": 1, "delta": "12%", "trend": "up", "spark": [4, 6, 5, 8, 9, 12, 11, 15] },
+        { "icon": "people", "label": "Clientes activos", "value": 48200, "delta": "8%", "trend": "up", "spark": [10, 11, 13, 12, 15, 16, 18, 19] },
         { "label": "Churn", "value": 3.2, "suffix": "%", "decimals": 1, "delta": "0,6 pp", "trend": "down", "spark": [6, 5.5, 5, 4.4, 4, 3.6, 3.4, 3.2] },
         { "label": "NPS", "value": 61, "note": "Meta 2027: 70", "spark": [40, 44, 47, 52, 55, 58, 60, 61] }
       ]
@@ -115,6 +115,32 @@
         { "label": "Servicios", "value": 28 },
         { "label": "Publicidad", "value": 16 },
         { "label": "Otros", "value": 10 }
+      ]
+    },
+
+    {
+      "type": "summary",
+      "id": "iconos",
+      "eyebrow": "ICONOS",
+      "title": "Iconos opcionales",
+      "cols": 3,
+      "items": [
+        { "icon": "globe2", "title": "Alcance", "text": "Campo \"icon\" con el nombre del SVG en iconos/." },
+        { "icon": "people", "title": "Comunidad", "text": "Los iconos toman el color de la paleta." },
+        { "icon": "arrow-clockwise", "title": "Ciclo", "text": "Funcionan en tarjetas, listas y KPIs." }
+      ]
+    },
+
+    {
+      "type": "cards",
+      "id": "iconos-tarjetas",
+      "eyebrow": "ICONOS",
+      "title": "Tarjetas con icono",
+      "cols": 3,
+      "items": [
+        { "icon": "globe2", "text": "Global" },
+        { "icon": "people", "text": "Personas" },
+        "Sin icono"
       ]
     },
 

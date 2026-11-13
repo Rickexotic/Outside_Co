@@ -13,6 +13,8 @@ document.addEventListener("DOMContentLoaded", async () => {
 
         window.presentationData = data;
 
+        await preloadIcons(data);
+
         renderPresentation(data);
 
     } catch (error) {
@@ -89,6 +91,115 @@ function showLoadError() {
 /* ================================================= */
 
 const SVG_NS = "http://www.w3.org/2000/svg";
+
+/* Iconos opcionales: "icon": "nombre" -> iconos/nombre.svg, o una ruta .svg */
+
+const ICON_CACHE = new Map();
+
+function iconPath(ref) {
+
+    const value = String(ref || "").trim();
+
+    if (!value) return "";
+
+    const path = /\.svg$/i.test(value) || value.includes("/") ? value : `iconos/${value}.svg`;
+
+    return /^[\w./-]+\.svg$/i.test(path) && !path.includes("..") && !path.startsWith("/") ? path : "";
+
+}
+
+function sanitizeSvg(text) {
+
+    const svg = new DOMParser().parseFromString(text, "image/svg+xml").documentElement;
+
+    if (!svg || svg.nodeName.toLowerCase() !== "svg") return "";
+
+    svg.querySelectorAll("script, foreignObject, style").forEach(node => node.remove());
+
+    [svg, ...svg.querySelectorAll("*")].forEach(node => {
+        [...node.attributes].forEach(attr => {
+            if (/^on/i.test(attr.name) || /javascript:/i.test(attr.value)) node.removeAttribute(attr.name);
+        });
+    });
+
+    ["width", "height", "class"].forEach(name => svg.removeAttribute(name));
+
+    svg.setAttribute("fill", "currentColor");
+    svg.setAttribute("aria-hidden", "true");
+    svg.setAttribute("focusable", "false");
+
+    return new XMLSerializer().serializeToString(svg);
+
+}
+
+function collectIconRefs(node, refs = new Set()) {
+
+    if (Array.isArray(node)) {
+        node.forEach(child => collectIconRefs(child, refs));
+    } else if (node && typeof node === "object") {
+        Object.entries(node).forEach(([key, value]) => {
+            if (key === "icon" && typeof value === "string") refs.add(iconPath(value));
+            else if (key !== "_icons") collectIconRefs(value, refs);
+        });
+    }
+
+    return refs;
+
+}
+
+async function preloadIcons(data) {
+
+    Object.entries(data._icons || {}).forEach(([path, markup]) => ICON_CACHE.set(path, markup));
+
+    const pending = [...collectIconRefs(data.slides)].filter(path => path && !ICON_CACHE.has(path));
+
+    await Promise.all(pending.map(async path => {
+
+        try {
+            const response = await fetch(path);
+            if (!response.ok) throw new Error(response.status);
+            ICON_CACHE.set(path, sanitizeSvg(await response.text()));
+        } catch (error) {
+            console.warn(`Icon "${path}" not loaded`, error);
+            ICON_CACHE.set(path, "");
+        }
+
+    }));
+
+}
+
+function iconEl(ref) {
+
+    const markup = ICON_CACHE.get(iconPath(ref));
+
+    if (!markup) return null;
+
+    const node = el("span", "icon");
+
+    node.innerHTML = markup;
+
+    return node;
+
+}
+
+function withIcon(node, ref) {
+
+    const icon = iconEl(ref);
+
+    if (icon) {
+        node.classList.add("has-icon");
+        node.prepend(icon);
+    }
+
+    return node;
+
+}
+
+function itemText(item) {
+
+    return item && typeof item === "object" ? item.text : item;
+
+}
 
 function el(tag, className, text, attributes) {
 
@@ -443,6 +554,13 @@ const SLIDE_RENDERERS = {
 
             const card = el("div", "summary-card");
 
+            const cardIcon = iconEl(item.icon);
+
+            if (cardIcon) {
+                cardIcon.classList.add("icon-lg");
+                card.append(cardIcon);
+            }
+
             card.append(el("span", null, item.number ?? String(index + 1).padStart(2, "0")));
 
             if (item.tag) card.append(el("small", "card-tag", item.tag));
@@ -498,7 +616,7 @@ const SLIDE_RENDERERS = {
 
             const list = el("ul");
 
-            (column.items || []).forEach(item => list.append(el("li", null, item)));
+            (column.items || []).forEach(item => list.append(withIcon(el("li", null, itemText(item)), item?.icon)));
 
             card.append(el("h3", null, column.title), list);
 
@@ -522,7 +640,7 @@ const SLIDE_RENDERERS = {
 
         gridColumns(grid, items.length, slide.cols || 5);
 
-        items.forEach(item => grid.append(el("div", "country-card", item)));
+        items.forEach(item => grid.append(withIcon(el("div", "country-card", itemText(item)), item?.icon)));
 
         container.append(grid);
 
@@ -534,7 +652,7 @@ const SLIDE_RENDERERS = {
 
         const { section, container } = slideShell(slide);
 
-        (slide.items || []).forEach(item => container.append(el("div", "trend", item)));
+        (slide.items || []).forEach(item => container.append(withIcon(el("div", "trend", itemText(item)), item?.icon)));
 
         return section;
 
@@ -1239,6 +1357,10 @@ function buildKpiCard(item) {
 
     const card = el("div", "kpi-card");
 
+    const kpiIcon = iconEl(item.icon);
+
+    if (kpiIcon) card.append(kpiIcon);
+
     card.append(el("div", "kpi-label", item.label));
 
     const value = el("div", "kpi-value");
@@ -1759,6 +1881,8 @@ function initializePresentationActions() {
                     };
 
                     const data = JSON.parse(JSON.stringify(window.presentationData));
+
+                    data._icons = Object.fromEntries([...ICON_CACHE].filter(([, markup]) => markup));
 
                     const [css, js] = await Promise.all([
                         stylesheet.href
