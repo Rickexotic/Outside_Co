@@ -512,24 +512,6 @@ const SLIDE_RENDERERS = {
 
     },
 
-    if(window.OUTSIDE_COMPONENTS){
-
-    Object.entries(
-        window.OUTSIDE_COMPONENTS
-    ).forEach(
-
-        ([key,component])=>{
-
-            SLIDE_RENDERERS[key] =
-                slide =>
-                component.render(slide);
-
-        }
-
-    );
-
-}
-
     hero(slide, data) {
 
         const section = el("section", "hero-slide");
@@ -690,42 +672,6 @@ const SLIDE_RENDERERS = {
     },
 
     ecosystem(slide) {
-
-        "ecosystem-flow"(slide) {
-
-    const { section, container } =
-        slideShell(slide);
-
-    const wrapper =
-        el(
-            "div",
-            "ecosystem-flow"
-        );
-
-    const hub =
-        el(
-            "div",
-            "ecosystem-hub"
-        );
-
-    hub.append(
-
-        el(
-            "div",
-            "ecosystem-hub-inner",
-            slide.center?.label ||
-            "Platform"
-        )
-
-    );
-
-    wrapper.append(hub);
-
-    container.append(wrapper);
-
-    return section;
-
-},
 
         const section = el("section");
 
