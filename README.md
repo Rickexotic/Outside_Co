@@ -55,6 +55,16 @@ Comunes: `caption`, `source`, `tone: "ink"` (panel oscuro), `format: {prefix, su
 
 Paleta: los gráficos usan `--chart-1…5` (por defecto lavanda, lima, texto, texto suave, borde). Respetan modo claro/oscuro, `prefers-reduced-motion` y la impresión a PDF.
 
+## Iconos (opcional)
+
+Los SVG de `iconos/` (Bootstrap Icons) se usan con el campo `icon`: el nombre sin extensión (`"globe2"` → `iconos/globe2.svg`) o una ruta `.svg` propia. Se insertan inline con `currentColor`, así que toman la paleta (lavanda; lima en modo oscuro). Si el archivo no existe, simplemente no se muestra.
+
+- `summary`: `items: [{icon, title, text}]` (icono grande sobre el número).
+- `cards`, `list` y `columns`: los ítems pueden ser texto o `{icon, text}`.
+- `kpis`: `items: [{icon, label, value}]`.
+
+Ver ejemplos en `data/content.demo.json`.
+
 ## Archivos
 
 `index.html` (shell), `app.js` (render + componentes), `styles.css` (diseño y gráficos), `data/` (contenidos), `assets/` (logos, sonido).
