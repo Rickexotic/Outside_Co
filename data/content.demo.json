@@ -1,0 +1,123 @@
+{
+  "language": "es",
+
+  "brand": {
+    "name": "Outside Co.",
+    "logo": {
+      "light": "assets/outside-logo-black.png",
+      "dark": "assets/outside-logo-white.png"
+    },
+    "storageKey": "outside-demo-theme",
+    "downloadName": "demo-graficos.html"
+  },
+
+  "intro": {
+    "text": "Datos ficticios",
+    "action": "Buscar"
+  },
+
+  "client": { "name": "Cliente Demo", "logo": "" },
+
+  "presentation": {
+    "title": "Demo de gráficos",
+    "subtitle": "Componentes opcionales con datos ficticios"
+  },
+
+  "slides": [
+    { "type": "hero", "id": "hero", "eyebrow": "EJEMPLO DE PLANTILLA" },
+
+    {
+      "type": "kpis",
+      "id": "kpis",
+      "eyebrow": "INDICADORES CLAVE",
+      "title": "Un vistazo al año",
+      "items": [
+        { "label": "Ingresos", "value": 128.4, "prefix": "$", "suffix": "M", "decimals": 1, "delta": "12%", "trend": "up", "spark": [4, 6, 5, 8, 9, 12, 11, 15] },
+        { "label": "Clientes activos", "value": 48200, "delta": "8%", "trend": "up", "spark": [10, 11, 13, 12, 15, 16, 18, 19] },
+        { "label": "Churn", "value": 3.2, "suffix": "%", "decimals": 1, "delta": "0,6 pp", "trend": "down", "spark": [6, 5.5, 5, 4.4, 4, 3.6, 3.4, 3.2] },
+        { "label": "NPS", "value": 61, "note": "Meta 2027: 70", "spark": [40, 44, 47, 52, 55, 58, 60, 61] }
+      ]
+    },
+
+    {
+      "type": "area-chart",
+      "id": "evolucion",
+      "tone": "ink",
+      "eyebrow": "EVOLUCIÓN",
+      "title": "Usuarios activos mensuales",
+      "caption": "Miles de usuarios, 2026",
+      "labels": ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
+      "series": [
+        { "name": "Usuarios", "values": [32, 36, 35, 41, 47, 45, 52, 58, 56, 64, 71, 78] }
+      ],
+      "highlight": 7,
+      "format": { "suffix": "k" },
+      "source": "Fuente: datos ficticios."
+    },
+
+    {
+      "type": "area-chart",
+      "id": "comparacion",
+      "eyebrow": "COMPARACIÓN",
+      "title": "Ventas vs. objetivo",
+      "labels": ["T1", "T2", "T3", "T4", "T5", "T6"],
+      "series": [
+        { "name": "Ventas", "values": [12, 18, 15, 24, 29, 35] },
+        { "name": "Objetivo", "values": [14, 16, 19, 22, 26, 30] }
+      ],
+      "highlight": "last",
+      "format": { "prefix": "$", "suffix": "M" }
+    },
+
+    {
+      "type": "bar-chart",
+      "id": "barras",
+      "alternate": true,
+      "eyebrow": "BENCHMARK",
+      "title": "Penetración por país",
+      "orientation": "horizontal",
+      "highlight": "max",
+      "format": { "suffix": "%" },
+      "items": [
+        { "label": "Chile", "value": 82 },
+        { "label": "Brasil", "value": 74 },
+        { "label": "México", "value": 61 },
+        { "label": "Colombia", "value": 57 },
+        { "label": "Perú", "value": 49 }
+      ]
+    },
+
+    {
+      "type": "bar-chart",
+      "id": "barras-verticales",
+      "eyebrow": "TRIMESTRES",
+      "title": "Ingresos por trimestre",
+      "orientation": "vertical",
+      "highlight": 3,
+      "format": { "prefix": "$", "suffix": "M" },
+      "items": [
+        { "label": "T1", "value": 21 },
+        { "label": "T2", "value": 28 },
+        { "label": "T3", "value": 25 },
+        { "label": "T4", "value": 36 }
+      ]
+    },
+
+    {
+      "type": "donut-chart",
+      "id": "donut",
+      "eyebrow": "COMPOSICIÓN",
+      "title": "Mix de ingresos",
+      "center": { "label": "Ingresos" },
+      "format": { "suffix": "%" },
+      "items": [
+        { "label": "Suscripciones", "value": 46 },
+        { "label": "Servicios", "value": 28 },
+        { "label": "Publicidad", "value": 16 },
+        { "label": "Otros", "value": 10 }
+      ]
+    },
+
+    { "type": "closing", "id": "closing", "text": "GRACIAS" }
+  ]
+}
