@@ -691,6 +691,42 @@ const SLIDE_RENDERERS = {
 
     ecosystem(slide) {
 
+        "ecosystem-flow"(slide) {
+
+    const { section, container } =
+        slideShell(slide);
+
+    const wrapper =
+        el(
+            "div",
+            "ecosystem-flow"
+        );
+
+    const hub =
+        el(
+            "div",
+            "ecosystem-hub"
+        );
+
+    hub.append(
+
+        el(
+            "div",
+            "ecosystem-hub-inner",
+            slide.center?.label ||
+            "Platform"
+        )
+
+    );
+
+    wrapper.append(hub);
+
+    container.append(wrapper);
+
+    return section;
+
+},
+
         const section = el("section");
 
         const container = el("div", "container center");
